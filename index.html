@@ -1,14 +1,17 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="/css/style.css">
     <title>Тестовый сайт для GitHub</title>
 </head>
+
 <body>
     <header>
         <h1>Добро пожаловать на тестовый сайт</h1>
+        <p>На этом сайте я делаю тестовые проекты и работаю с Git</p>
         <nav>
             <a href="index.html">Главная</a>
             <a href="/php/register.php">Регистрация</a>
@@ -17,11 +20,30 @@
         </nav>
     </header>
 
+    <style>
+        .grid-container {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+        }
+
+        .grid-item {
+            padding: 20px;
+            background-color: green;
+
+        }
+    </style>
+
     <main>
-        <h2>Главная страница</h2>
-        <p>Это тестовый сайт с регистрацией и статьями.</p>
-        <p>Тестовое описание</p>
+        <div class="main__inner grid-container">
+            <article class="grid-item">
+                <h2>Делаем форму комментариев научимся принимать из неё данные, проверять и если всё ок то будет
+                    публиковать этот комментарий который впоследствии ещё можно будет удалить</h2>
+                <p></p>
+            </article>
+        </div>
     </main>
+
     <script src="js/script.js"></script>
 </body>
+
 </html>
