@@ -5,6 +5,7 @@
     margin: 0;
     padding: 0;
     box-sizing: border-box;
+    transition: .3s;
 }
 
 :root {
@@ -54,6 +55,7 @@ h3 {
 p {
     font-size: 1rem;
     font-weight: 300;
+    text-align: left;
     color: var(--light-black-p);
 }
 
@@ -66,13 +68,14 @@ ul, ol {
 a {
     font-weight: 300;
     text-decoration: none;
-    font-style: normal
+    font-style: normal;
+    color: var(--light-black-p);
 }
 
 img {
     width: 100%;
     height: 100%;
-    object-fit: cover;
+    object-fit: contain;
 
     pointer-events: all;
     user-select: none;
@@ -112,6 +115,10 @@ button:hover, .btn:hover {
     width: 100%;
     padding: 0 var(--space);
     margin: 0 auto;
+}
+
+section {
+    margin: 50px 0;
 }
 
 
@@ -156,16 +163,61 @@ button:hover, .btn:hover {
 /* Верх сайта */
 /* ----------------------------------------------------- */
 header {
-    background-color: #f0f0f0;
-    padding: 10px;
+    width: 100%;
+    background-color: #e4e4e4;
     text-align: center;
 }
 
-nav a {
-    margin: 0 10px;
-    text-decoration: none;
-    color: #333;
+.header__inner{
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding-top: 10px;
+    padding-bottom: 10px;
 }
+
+.header__inner-main-info{
+    display: flex;
+    align-items: center;
+}
+
+.header__inner-logo{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.header__inner-title{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: flex-start;
+    margin: 0 20px;
+}
+
+.header__inner-title h1{
+    font-size: 2rem;
+}
+
+nav ul {
+    display: flex;
+    align-items: center;
+}
+
+nav ul li {
+    margin-right: 10px;
+}
+
+nav ul li:last-child {
+    margin-right: 0;
+}
+
+/* 767px и меньше */
+@media (max-width: 767px) {
+  .header__inner-title { display: none; }
+}
+
 
 
 
@@ -178,6 +230,12 @@ nav a {
 /* ----------------------------------------------------- */
 /* Основной контент */
 /* ----------------------------------------------------- */
-/* main {
+main {
+    margin: 0;
+    padding: 0;
+}
+
+/* Раздел с тестовыми проектами */
+/* .test-projects{
     
 } */

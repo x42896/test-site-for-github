@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="ru">
 
 <head>
     <meta charset="UTF-8">
@@ -8,55 +8,138 @@
     <title>Тестовый сайт для GitHub</title>
 </head>
 
-<body>
+<body class="page-home">
+    
+
     <header>
-        <h1>Добро пожаловать на тестовый сайт</h1>
-        <p>На этом сайте я делаю тестовые проекты и работаю с Git</p>
-        <nav>
-            <a href="index.html">Главная</a>
-            <a href="/php/register.php">Регистрация</a>
-            <a href="/php/login.php">Вход</a>
-            <a href="/php/articles.php">Статьи</a>
-        </nav>
+        <div class="header__inner container">
+
+            <!-- Лого и название -->
+            <div class="header__inner-main-info">
+                <div class="header__inner-logo">
+                    <img src="/img/aleksandr-belousov-git-example-projects.webp" alt="Логотип сайта" width="64" height="64">
+                </div>
+                
+                <div class="header__inner-title">
+                    <h1>Belouale</h1>
+                    <p>Портфолио – тестовые проекты</p>
+                </div>
+            </div>
+            
+            <nav>
+                <ul>
+                    <li><a href="index.html">Главная</a></li>
+                    <li><a href="/php/register.php">Регистрация</a></li>
+                    <li><a href="/php/login.php">Вход</a></li>
+                    <li><a href="/php/articles.php">Статьи</a></li>
+                </ul>
+            </nav>
+        </div>
     </header>
 
-    <style>
-        .grid-container {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(400px, 1fr));
-            gap: 10px;
-        }
-
-        .grid-item {
-            padding: 20px;
-            background-color: rgb(255, 255, 255);
-
-        }
-    </style>
-
+    
     <main>
-        <div class="main__inner container grid-container">
-            <article class="grid-item">
-                <h2>Форма для комментрариев</h2>
-                <img src="/" alt="Картинка раздела">
-                <p>Делаем форму комментариев научимся принимать из неё данные, проверять и если всё ок то будет публиковать этот комментарий который впоследствии ещё можно будет удалить</p>
-                <a href="#" class="btn">Подробнее</a>
-            </article>
+        <style>    
+            .section__inner > p{
+                margin-bottom: 20px;
+            }
 
-            <article class="grid-item">
-                <h2>Форма для комментрариев</h2>
-                <img src="/" alt="Картинка раздела">
-                <p>Делаем форму комментариев научимся принимать из неё данные, проверять и если всё ок то будет публиковать этот комментарий который впоследствии ещё можно будет удалить</p>
-                <a href="#">Подробнее</a>
-            </article>
+            .grid-container {
+                display: grid;
+                grid-template-columns: repeat(auto-fit, minmax(400px, 1fr));
+                gap: 10px;
+            }
 
-            <article class="grid-item">
-                <h2>Форма для комментрариев</h2>
-                <img src="/" alt="Картинка раздела">
-                <p>Делаем форму комментариев научимся принимать из неё данные, проверять и если всё ок то будет публиковать этот комментарий который впоследствии ещё можно будет удалить</p>
-                <a href="#">Подробнее</a>
-            </article>
-        </div>
+            .grid-item {
+                padding: 20px;
+                background-color: rgb(255, 255, 255);
+
+            }
+
+            .card {
+                display: flex;
+                flex-direction: column;
+                gap: 20px;
+            }
+        </style>
+
+        <!-- Раздел с тестовыми проектами -->
+        <section class="test-projects">
+            <div class="section__inner test-projects__inner container">
+                
+                <h2>Раздел с тестовыми проектами</h2>
+                <p>В этом разделе можно посмотреть подробную информацию о том как я создавал небольшие проекты при обучении</p>
+
+                <div class="grid-container">
+                
+                    <!-- Карточка -->
+                    <article class="grid-item card">
+                        
+                        <div class="card__header">
+                            <h3 class="card__title">Форма для комментрариев</h3>
+                        </div>
+                        
+                        <div class="card__img">
+                            <img src="/" alt="Картинка раздела">
+                        </div>
+                        
+                        <div class="card__body">
+                            <p class="card__description">Делаем форму комментариев научимся принимать из неё данные, проверять и если всё ок то будет публиковать этот комментарий который впоследствии ещё можно будет удалить</p>
+                        </div>
+
+                        <div class="card__footer">
+                            <a href="#" class="btn card__btn">Подробнее</a>
+                        </div>
+
+                    </article>
+
+                    <!-- Карточка -->
+                    <article class="grid-item card">
+                        
+                        <div class="card__header">
+                            <h3 class="card__title">Форма для комментрариев</h3>
+                        </div>
+                        
+                        <div class="card__img">
+                            <img src="/" alt="Картинка раздела">
+                        </div>
+                        
+                        <div class="card__body">
+                            <p class="card__description">Делаем форму комментариев научимся принимать из неё данные, проверять и если всё ок то будет публиковать этот комментарий который впоследствии ещё можно будет удалить</p>
+                        </div>
+
+                        <div class="card__footer">
+                            <a href="#" class="btn card__btn">Подробнее</a>
+                        </div>
+
+                    </article>
+
+                    <!-- Карточка -->
+                    <article class="grid-item card">
+                        
+                        <div class="card__header">
+                            <h3 class="card__title">Форма для комментрариев</h3>
+                        </div>
+                        
+                        <div class="card__img">
+                            <img src="/" alt="Картинка раздела">
+                        </div>
+                        
+                        <div class="card__body">
+                            <p class="card__description">Делаем форму комментариев научимся принимать из неё данные, проверять и если всё ок то будет публиковать этот комментарий который впоследствии ещё можно будет удалить</p>
+                        </div>
+
+                        <div class="card__footer">
+                            <a href="#" class="btn card__btn">Подробнее</a>
+                        </div>
+
+                    </article>
+                    
+                </div>
+
+            </div>
+        </section>
+        
     </main>
 
     <script src="js/script.js"></script>
