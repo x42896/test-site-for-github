@@ -72,10 +72,10 @@ a {
     color: var(--light-black-p);
 }
 
-img {
+picture, img {
     width: 100%;
     height: 100%;
-    object-fit: contain;
+    object-fit: cover;
 
     pointer-events: all;
     user-select: none;

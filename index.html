@@ -17,7 +17,7 @@
             <!-- Лого и название -->
             <div class="header__inner-main-info">
                 <div class="header__inner-logo">
-                    <img src="/img/aleksandr-belousov-git-example-projects.webp" alt="Логотип сайта" width="64" height="64">
+                    <img src="/images/header/aleksandr-belousov-git-example-projects.webp" alt="Логотип сайта" width="64" height="64">
                 </div>
                 
                 <div class="header__inner-title">
@@ -34,6 +34,7 @@
                     <li><a href="/php/articles.php">Статьи</a></li>
                 </ul>
             </nav>
+
         </div>
     </header>
 
@@ -61,6 +62,24 @@
                 flex-direction: column;
                 gap: 20px;
             }
+
+            .card__img{
+                height: 400px;
+                display: flex;
+                justify-content: center;
+                align-items: center;
+                background-color: antiquewhite;
+            }
+
+            .card__footer{
+                display: flex;
+                justify-content: space-between;
+                align-items: center;
+            }
+
+            .card__footer-date{
+                font-size: .8rem;
+            }
         </style>
 
         <!-- Раздел с тестовыми проектами -->
@@ -80,7 +99,21 @@
                         </div>
                         
                         <div class="card__img">
-                            <img src="/" alt="Картинка раздела">
+                            <picture>
+                                <!-- Маленька -->
+                                <source media="(max-width: 576px)"
+                                    srcset="/images/test-projects/form-with-commets-s.webp"
+                                    type="image/webp">
+                                <!-- Большая -->
+                                <source media="(min-width: 577px)"
+                                    srcset="/images/test-projects/form-with-commets.webp"
+                                    type="image/webp">
+                                <img src="/images/test-projects/form-with-commets.png" 
+                                    alt="Урок по созданию формы с выводом комментариев"
+                                    width=""
+                                    height=""
+                                    loading="lazy">
+                            </picture>
                         </div>
                         
                         <div class="card__body">
@@ -88,7 +121,8 @@
                         </div>
 
                         <div class="card__footer">
-                            <a href="#" class="btn card__btn">Подробнее</a>
+                            <a href="/pages/form-with-comment.html" class="btn card__btn" target="_blank">Подробнее</a>
+                            <p class="card__footer-date">31.07.2025</p>
                         </div>
 
                     </article>
@@ -101,7 +135,7 @@
                         </div>
                         
                         <div class="card__img">
-                            <img src="/" alt="Картинка раздела">
+                            <img src="/images/test-projects/Screenshot 2025-07-31 at 04.48.12.png" alt="Картинка раздела">
                         </div>
                         
                         <div class="card__body">
@@ -110,6 +144,7 @@
 
                         <div class="card__footer">
                             <a href="#" class="btn card__btn">Подробнее</a>
+                            <p class="card__footer-date">31.07.2025</p>
                         </div>
 
                     </article>
@@ -122,7 +157,7 @@
                         </div>
                         
                         <div class="card__img">
-                            <img src="/" alt="Картинка раздела">
+                            <img src="/" alt="Тут будет картинка">
                         </div>
                         
                         <div class="card__body">
@@ -131,6 +166,7 @@
 
                         <div class="card__footer">
                             <a href="#" class="btn card__btn">Подробнее</a>
+                            <p class="card__footer-date">31.07.2025</p>
                         </div>
 
                     </article>
