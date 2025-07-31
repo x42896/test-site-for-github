@@ -3,6 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="/css/style.css">
     <title>Document</title>
 </head>
 <body>
@@ -14,12 +15,18 @@
             outline: none;
         }
 
-        body { background: #fafafa; }
+        body { background-color: whitesmoke; }
 
         #comments-form,
         .comments {
-            width: 400px;
+            width: 350px;
             margin: 50px auto;
+
+        }
+
+        #comments-form h1{
+            font-size: 1.75rem;
+            margin-bottom: 20px;
 
         }
 
@@ -30,7 +37,7 @@
             padding: 15px 20px;
             border: 1px solid lightgray;
             border-radius: 5px;
-            font-size: 14px;
+            font-size: 16px;
         }
 
         #comments-form textarea {
@@ -41,7 +48,7 @@
         #comments-form button {
             border-radius: 5px;
             border: 0;
-            background: red;
+            background-color: tomato;
             padding: 10px 20px;
             font-size: 14px;
             color: white;
@@ -56,37 +63,112 @@
             margin-bottom: 10px;
             font-size: 17px;
             font-weight: bold;
-            color: red;
+            color: tomato;
         }
 
         #comments h3 {
             margin-bottom: 10px;
-            /* color: black; */
         }
 
-        .comments h3 span { color: red; }
+        .comments h3 span { color: tomato; }
+
+        .comments .comment {
+            width: 100%;
+            background: white;
+            border: 1px solid silver;
+            border-radius: 5px;
+            padding: 15px 20px;
+            margin-top: 20px;
+        }
+
+        .comments .comment .delete {
+            float: right;
+            font-weight: bold;
+            cursor: pointer;
+            color: tomato;
+            
+        }
+
+        .comments .comment .delete:hover { color: black }
+        .comments .comment .name { font-weight: bold }
+        .comments .comment .mess { margin-top: 10px }
+
     </style>
 
 
-
-    <form action="" id="comments-form" autocomplete="off">
+    <!-- HTML -->
+    <form action="" id="comments-form" autocomplete="off" class="container">
+        <h1>Тут можно добавить и удалить комментарий</h1>
         <input type="text" name="name" placeholder="Введите ваше имя">
         <input type="text" name="comment" placeholder="Введите сообщение">
         <div id="error"></div>
-        <button>Отправить</button>
+        <button type="button">Отправить</button>
     </form>
 
-    <section class="comments">
-        <h3>Комментарий (<span class="count-comm">0</span>)</h3>
-        <div id="comments">
-            Пока комментариев нет
-        </div>
+    <section class="comments container">
+        <h3>Кол-во комментариев (<span class="count-comm">0</span>)</h3>
+        <div id="comments">Пока комментариев нет</div>
     </section>
 
 
 
+    <!-- JavaScript -->
     <script>
+        let btnForm = document.querySelector('#comments-form button')
+        let countComments = 0
+        let idComment = 0
 
+
+        btnForm.onclick = function () {
+            idComment++
+
+            // Обращаемся к input в форме через name="" и проверяем есть ли там данные или пользователь хочет отправить пустоту
+            let form = document.querySelector('#comments-form')
+            
+            if (form.name.value.length < 3) {
+                document.querySelector('#error').innerHTML = 'Длина имени не менее 3 символов'
+                return false
+
+            } else if (form.comment.value.length < 5) {
+                document.querySelector('#error').innerHTML = 'Длина сообщения не менее 5 символов'
+                return false
+            }
+
+            document.querySelector('#error').innerHTML = ''
+
+            // Новое значение для подсчета комментариев
+            if (countComments == 0)
+                document.querySelector('#comments').innerHTML = ''
+            
+            
+            countComments++
+            document.querySelector('.count-comm').innerHTML = countComments
+
+            let newComment = `
+            <div class="comment" id="block-${idComment}">
+                <span class="delete" onclick="delComm(${idComment})">&times</span>
+                <p class="name">${form.name.value}</p>
+                <p class="mess">${form.comment.value}</p>
+            </div>
+            `
+
+            // Вставляем HTML код из переменной newComment в #comment в начало afterbegin
+            document.querySelector('#comments').insertAdjacentHTML('afterbegin', newComment)
+
+            // Очистка поля формы соощения
+            form.comment.value = ''
+        }
+
+        // Удаление комментариев
+        function delComm(id) {
+            document.querySelector(`#block-${id}`).remove()
+
+            countComments--
+            document.querySelector('.count-comm').innerHTML = countComments
+
+            if (countComments == 0)
+                document.querySelector('#comments').innerHTML = 'Пока комментариев нет'
+        }
     </script>
 </body>
 </html>
