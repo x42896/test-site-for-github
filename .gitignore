@@ -5,6 +5,7 @@ config.php
 # Игнорировать зависимости
 /vendor
 /node_modules
+/for-test.html
 
 # Системные файлы
 .DS_Store
