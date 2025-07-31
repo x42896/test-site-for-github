@@ -6,6 +6,87 @@
     <title>Document</title>
 </head>
 <body>
-    <h1>Комментраии</h1>
+    <!-- HTML, CSS, JS для тестовых мелких проектов пишу в одном файле, очень грубо говоря как "Компонентный подход" -->
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            outline: none;
+        }
+
+        body { background: #fafafa; }
+
+        #comments-form,
+        .comments {
+            width: 400px;
+            margin: 50px auto;
+
+        }
+
+        #comments-form input,
+        #comments-form textarea {
+            width: 100%;
+            margin-bottom: 10px;
+            padding: 15px 20px;
+            border: 1px solid lightgray;
+            border-radius: 5px;
+            font-size: 14px;
+        }
+
+        #comments-form textarea {
+            resize: none;
+            height: 100px;
+        }
+
+        #comments-form button {
+            border-radius: 5px;
+            border: 0;
+            background: red;
+            padding: 10px 20px;
+            font-size: 14px;
+            color: white;
+            cursor: pointer;
+            transition: .3s;
+            /* transition: background 600ms ease; */
+        }
+
+        #comments-form button:hover { background: black; }
+
+        #error:not(:empty) {
+            margin-bottom: 10px;
+            font-size: 17px;
+            font-weight: bold;
+            color: red;
+        }
+
+        #comments h3 {
+            margin-bottom: 10px;
+            /* color: black; */
+        }
+
+        .comments h3 span { color: red; }
+    </style>
+
+
+
+    <form action="" id="comments-form" autocomplete="off">
+        <input type="text" name="name" placeholder="Введите ваше имя">
+        <input type="text" name="comment" placeholder="Введите сообщение">
+        <div id="error"></div>
+        <button>Отправить</button>
+    </form>
+
+    <section class="comments">
+        <h3>Комментарий (<span class="count-comm">0</span>)</h3>
+        <div id="comments">
+            Пока комментариев нет
+        </div>
+    </section>
+
+
+
+    <script>
+
+    </script>
 </body>
 </html>
