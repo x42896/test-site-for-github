@@ -6,6 +6,7 @@ config.php
 /vendor
 /node_modules
 /for-test.html
+/js/test.js
 
 # Системные файлы
 .DS_Store
