@@ -239,3 +239,20 @@ main {
 /* .test-projects{
     
 } */
+
+
+
+
+
+
+
+
+
+/* ----------------------------------------------------- */
+/* Низ сайта */
+/* ----------------------------------------------------- */
+footer { background: radial-gradient(at 0 0,#232325 6%,#17151e 90%); }
+
+.footer__inner { padding-top: 20px; padding-bottom: 20px; }
+
+footer h2, footer p, footer a { color: white; }
