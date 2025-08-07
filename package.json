@@ -1,0 +1,31 @@
+{
+  "name": "test-site-for-github",
+  "version": "1.0.0",
+  "description": "🔗 **Live Demo:** [Production версия](https://yourdomain.com/test-site) | [GitHub Pages](https://yourdomain.com/test-site)",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/x42896/test-site-for-github.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/x42896/test-site-for-github/issues"
+  },
+  "homepage": "https://github.com/x42896/test-site-for-github#readme",
+  "devDependencies": {
+    "gulp": "^5.0.1",
+    "gulp-clean-css": "^4.3.0",
+    "gulp-htmlmin": "^5.0.1",
+    "gulp-notify": "^5.0.0",
+    "gulp-plumber": "^1.2.1",
+    "gulp-rename": "^2.1.0",
+    "gulp-sass": "^6.0.1",
+    "gulp-terser": "^2.1.0",
+    "sass": "^1.90.0"
+  }
+}
