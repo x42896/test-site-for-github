@@ -1,0 +1,165 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>Работа JS в HTML</title>
+</head>
+
+<body>
+    <style>
+        * { margin: 10px; }
+        body{ background-color: #456b78; } 
+        button { margin-bottom: 20px; padding: 10px 20px; display: block;}
+        a { color: black; }
+    </style>
+
+
+    
+    <nav style="width: fit-content; margin-bottom: 50px; padding: 20px; background-color: antiquewhite;">
+        <a href="/">Главная</a>
+        <a href="/calculyator-page.html">Калькулятор (2стр.)</a>
+        <a href="/zametki-page.html">Заметки (3стр.)</a>
+    </nav>
+    
+
+
+    <!-- Кнопка меняет цвет body на рандомный цвет из массива (списка) который я сам создал -->
+    <button id="btn" type="button">Поменять цвет background на рандомный</button>
+    
+    <script>
+        // Массив с цветами в HEX-формате, которые будут использоваться
+        const colors = ['#FF0000', '#FF8000', '#FFFF00', '#00FF00', '#0080FF', '#0000FF', '#FF00FF', '#456b78']
+        const btn = document.getElementById("btn")
+        btn.addEventListener("click", setColor)
+
+        // Объявляем собственную функцию с именем setColor для изменение цвет фона
+        function setColor() {
+            // Вызываем другую нашу функцию, чтобы получить случайный цвет. Результат её работы (возвращённый цвет) сохраняем в переменную `color`    
+            const color = getRandomColor()
+            document.body.style.backgroundColor = color // меняем цвет body на наш случайный цвет
+        }
+
+        // Объявляем собственную функцию с именем getRandomColor для выбора и возврата случайного цвет из нашего массива
+        function getRandomColor() {
+            // Math.random() генерирует случайное число от 0 (включительно) до 1 (исключительно) Умножаем его на длину массива, чтобы получить число в диапазоне [0, 7) (7 не включительно)
+            // Math.floor() округляет это число вниз до целого. Получаем случайный ИНДЕКС массива (от 0 до 6 включительно)
+            // Возвращаем элемент массива `colors`, находящийся по этому случайному индексу.
+            return colors[Math.floor(Math.random() * colors.length)]
+        }
+    </script>
+
+
+
+
+
+    <!-- Кнопка добавляет текст в консоль -->
+    <button id="myJustClickButton">Нажми и в консоли появится надпись</button>
+    
+    <script>
+        const myJustClickButton = document.getElementById('myJustClickButton') // Путь по id в HTML до myJustClickButton
+        myJustClickButton.onclick = function () { // Безымянная функция которая срабатывает при клике в кнопке в HTML
+            console.log('Hello Click!')
+        }
+    </script>
+
+
+
+
+
+    <!-- Изменение стилей тега p -->
+    <p id="tag-p-1" style="display: inline-block; padding: 10px;">При загрузки страницы, этот тег P меняет свои свойства</p>
+    
+    <script>
+        // Как и в Lua есть обращение напрмер к ОДНОМУ (id) элементу как game.workspace.bri....
+        document.getElementById('tag-p-1').style.color = "blue"
+
+        // Но лучше переменную сразу сделать как и в Roblox
+        let tagP1 = document.getElementById('tag-p-1')
+
+        tagP1.style.color = "green"
+        tagP1.style.backgroundColor = "yellow"
+    </script>
+
+
+
+
+
+    <!-- Нажал на кнопку появился Alert и в консоль выведется +1 клик -->
+    <button name="prostoButton" onclick="onClickButton()">Нажми на меня и появится Alert</button>
+    
+    <script>
+        let clickUp = 0;
+
+        function onClickButton() {
+            alert('Вы нажали на меня')
+            clickUp++
+            console.log(clickUp)
+        }
+    </script>
+
+
+
+
+
+    <!-- Нажал на кнопку и появилось кол-во нажатий  -->
+    <!-- Атрибут onclick вызовает функцию myFuncCount() и передает ей ссылку на этот конкретный элемент (this) -->
+    <!-- this используется только в том случае если не создаём под объект переменную -->
+    <!-- this это такой как бы шорткат – короткий путь без создания переменной -->
+    <!-- Лучше вынести всю логику JS в отдельный файл и создать переменную тогда this писать не нужно будет -->
+    <button name="myClickCounter" onclick="myFuncCount(this)">Нажато 0 раз</button>
+
+    <script>
+        // Счётчик кликов
+        let myClickQuantity = 0
+        
+        // Моя функция принимает параметр - тот самый элемент (кнопку), который передали через this
+        function myFuncCount(myThisElement) {
+            myClickQuantity++
+            myThisElement.innerHTML = `Вы нажали ${myClickQuantity} раз`
+        }
+    </script>
+
+
+
+
+
+    <!-- Нажал на кнопку изменился текст, стили и появился счетчик кликов -->
+    <button name="mainButton" onclick="onClickButton2(this)">Нажми для изменения шрифта и появления счётчика кликов</button>
+    <script>
+
+        let schetchikClickov2 = 0;
+        function onClickButton2(myThisElement2){
+            schetchikClickov2++
+            myThisElement2.innerHTML = 'Вы нажали ' + schetchikClickov2 + ' раз'
+            console.log(myThisElement2.name) // выводит в консоль имя кнопки на котоурю нажал, вместо name можно писать любой атрибут
+
+            // myThisElement2.style.background = 'red' // точечное изменение / добавление только свойство background у myThisElement2
+            // myThisElement2.style.color = 'white' // тоже точечное, только color остальное стили не трогаем
+
+            // Перезаписывание текущего атрибута style в теге HTML (массовое изменение) удаляет ВСЕ инлайн-стили, которые были у этого элемента, и устанавливает вот эти новые
+            myThisElement2.style.cssText = 'border-radius: 5px; border: 0; color: white; background-color: #07154b;'
+
+            // Есть несколько способов добавить стили, не перезаписывая существующие
+            // Object.assign() лучший современный способ, позволяет "вмержить" новые стили в существующие
+            // CSSStyleDeclaration.setProperty() – более чистый способ, позволяет установить отдельное свойство, не трогая остальные
+            // Добавление класса CSS – самый правильный способ, вынести стили в CSS-класс и просто добавлять/убирать его
+        }
+    </script>
+
+
+
+
+
+    <!-- Поле для ввода текста с трекером функцией Js (отслеживанием как пишет пользователь) если ввели Hello будет Alert -->
+    <input size="80" placeholder="Поле ввода которое отслеживает в консоли каждый символ который ввёл пользователь" oninput="funcInJsOnInput(this)">
+
+    <script>
+        // Функцию для отслеживания что вводит пользователь в input в HTML
+        function funcInJsOnInput(element2) {
+            if(element2.value == 'Hello')
+                alert('И тебе привет!')
+            console.log(element2.value)
+        }
+    </script>
+</body>
+</html>
