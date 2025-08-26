@@ -1,0 +1,201 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<!-- head со стилями CSS -->
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Calculator</title>
+    <style>
+        body {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            background-color: #f0f0f0;
+            font-family: Arial, sans-serif;
+        }
+
+        .calculator {
+            background-color: #fff;
+            border-radius: 10px;
+            box-shadow: 0 0 20px rgba(0, 0, 0, 0.1);
+            padding: 20px;
+        }
+
+        .calculator-display {
+            width: 100%;
+            height: 40px;
+            font-size: 1.5rem;
+            text-align: right;
+            margin-bottom: 10px;
+            padding-right: 10px;
+            border: none;
+            background-color: #eaeaea;
+        }
+
+        .calculator-buttons {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 10px;
+        }
+
+        .btn {
+            background-color: #f9f9f9;
+            border: none;
+            border-radius: 5px;
+            font-size: 1.2rem;
+            padding: 15px;
+            cursor: pointer;
+            transition: background-color 0.2s ease;
+        }
+
+        .btn:hover {
+            background-color: #dcdcdc;
+        }
+
+        .operation {
+            background-color: #ffab00;
+        }
+
+        .operation:hover {
+            background-color: #ff9800;
+        }
+
+        .clear {
+            grid-column: span 4;
+            background-color: #ff5252;
+        }
+
+        .clear:hover {
+            background-color: #ff1744;
+        }
+    </style>
+</head>
+
+<body>
+    <!-- Интерфейс калькулятора -->
+    <div class="calculator">
+        <input type="text" class="calculator-display" id="display" disabled>
+        <div class="calculator-buttons">
+            <!-- Кнопки с data-атрибутами -->
+            <button class="btn" data-number="7">7</button>
+            <button class="btn" data-number="8">8</button>
+            <button class="btn" data-number="9">9</button>
+            <button class="btn operation" data-operation="/">/</button>
+
+            <button class="btn" data-number="4">4</button>
+            <button class="btn" data-number="5">5</button>
+            <button class="btn" data-number="6">6</button>
+            <button class="btn operation" data-operation="*">*</button>
+
+            <button class="btn" data-number="1">1</button>
+            <button class="btn" data-number="2">2</button>
+            <button class="btn" data-number="3">3</button>
+            <button class="btn operation" data-operation="-">-</button>
+
+            <button class="btn" data-number="0">0</button>
+            <button class="btn" data-number=".">.</button>
+            <button class="btn" data-action="equals">=</button>
+            <button class="btn operation" data-operation="+">+</button>
+
+            <button class="btn clear" data-action="clear">C</button>
+        </div>
+    </div>
+
+    <!-- Скрипт калькулятора -->
+        <script>
+        // Переменные для хранения состояния
+        let firstOperand = ''       // первый ввод пользователя
+        let currentOperation = null // текущая операция (+, -, *, /)
+        let shouldResetDisplay = false // флаг для очистки дисплея
+
+        const display = document.getElementById('display')
+        const buttons = document.querySelectorAll('.btn')
+
+        // Навешиваем обработчик на все кнопки
+        buttons.forEach(button => {
+            button.addEventListener('click', () => {
+                // Если кнопка - число
+                if (button.dataset.number) {
+                    appendNumber(button.dataset.number)
+                }
+
+                // Если кнопка - операция
+                if (button.dataset.operation) {
+                    chooseOperation(button.dataset.operation)
+                }
+
+                // Если кнопка - равно
+                if (button.dataset.action === 'equals') {
+                    computeResult()
+                }
+
+                // Если кнопка - очистка
+                if (button.dataset.action === 'clear') {
+                    clearDisplay()
+                }
+            })
+        })
+
+        // Добавляем число на экран
+        function appendNumber(number) {
+            if (shouldResetDisplay) {
+                display.value = ''
+                shouldResetDisplay = false
+            }
+            display.value += number
+        }
+
+        // Выбор операции (+, -, *, /)
+        function chooseOperation(operation) {
+            if (currentOperation !== null) computeResult()
+            firstOperand = display.value
+            currentOperation = operation
+            shouldResetDisplay = true
+        }
+
+        // Вычисление результата
+        function computeResult() {
+            if (currentOperation === null || shouldResetDisplay) return
+
+            const secondOperand = display.value
+            const firstOperandParsed = parseFloat(firstOperand)
+            const secondOperandParsed = parseFloat(secondOperand)
+
+            if (isNaN(firstOperandParsed) || isNaN(secondOperandParsed)) {
+                display.value = ''
+                return
+            }
+
+            let result
+
+            switch (currentOperation) {
+                case '+': result = firstOperandParsed + secondOperandParsed; break
+                case '-': result = firstOperandParsed - secondOperandParsed; break
+                case '*': result = firstOperandParsed * secondOperandParsed; break
+                case '/':
+                    // Если делим на ноль
+                    if (secondOperandParsed === 0) {
+                        display.value = 'Ошибка'
+                        currentOperation = null
+                        return
+                    }
+                    result = firstOperandParsed / secondOperandParsed; break
+                default: return
+            }
+
+            display.value = result
+            currentOperation = null
+        }
+
+        // Очистка дисплея
+        function clearDisplay() {
+            display.value = ''
+            firstOperand = ''
+            currentOperation = null
+            shouldResetDisplay = false
+        }
+    </script>
+</body>
+</html>
