@@ -107,6 +107,7 @@
             .card {
                 display: flex;
                 flex-direction: column;
+                justify-content: space-between;
                 gap: 20px;
             }
 
@@ -116,6 +117,17 @@
                 justify-content: center;
                 align-items: center;
                 background-color: antiquewhite;
+            }
+
+            .card__body {
+                height: calc(1rem * 5);
+                overflow: scroll;
+                scrollbar-width: none;
+                -ms-overflow-style: none;
+            }
+
+            .card__body::-webkit-scrollbar {
+                display: none;
             }
 
             .card__footer{

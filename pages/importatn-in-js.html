@@ -7,19 +7,32 @@
 
 <body>
     <style>
-        * { margin: 10px; }
-        body{ background-color: #456b78; } 
+        * { padding: 0; margin: 0; box-sizing: border-box; }
+        body{ padding: 20px; background-color: #456b78; } 
         button { margin-bottom: 20px; padding: 10px 20px; display: block;}
         a { color: black; }
+        p { margin-bottom: 20px; }
+        
+        /* Это для простейших заметок */
+        .div-main {
+            width: 300px;
+            background-color: antiquewhite; 
+            padding: 20px;
+        }
+
+        input { margin: 20px 0; }
+
+        ul li {
+            width: 100%;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 5px;
+            padding: 5px;
+            list-style: none;
+            background-color: rgb(245, 243, 239);
+        }
     </style>
-
-
-    
-    <nav style="width: fit-content; margin-bottom: 50px; padding: 20px; background-color: antiquewhite;">
-        <a href="/">Главная</a>
-        <a href="/calculyator-page.html">Калькулятор (2стр.)</a>
-        <a href="/zametki-page.html">Заметки (3стр.)</a>
-    </nav>
     
 
 
@@ -159,6 +172,39 @@
             if(element2.value == 'Hello')
                 alert('И тебе привет!')
             console.log(element2.value)
+        }
+    </script>
+
+
+
+
+    <!-- Интерфейс – простейших заметок, добавление кода HTML по кнопке в JS -->
+    <div class="div-main">
+        <h2>Заметки</h2>
+        
+        <input type="text" id="inputTitle" placeholder="Введите название"><br>
+        <button id="buttonAddNotes">Добавить</button>
+        <ul id="ulMain">
+            <!-- Сюда добавится код -->
+        </ul>
+    </div>
+    
+
+    <!-- Скрипт добавления заметок -->
+    <script>
+        const inputElement = document.getElementById('inputTitle')
+        const createBtn = document.getElementById('buttonAddNotes')
+        const listElement = document.getElementById('ulMain')
+
+        createBtn.onclick = function () {
+            if (inputElement.value.length === 0) { // Если ввести пустоту то...
+                return // ничего не будет происходить
+            }
+
+            // Берёт и вставляет целый кусок HTML кода в то место куда я укажу
+            listElement.insertAdjacentHTML('beforeend',
+                `<li>${inputElement.value} <span>x</span></li>`
+            )
         }
     </script>
 </body>
