@@ -1,0 +1,135 @@
+<!DOCTYPE html>
+<html lang="ru">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Список дел – главная</title>
+</head>
+
+<body>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #242424;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+        }
+
+
+        .container {
+            background: white;
+            padding: 20px;
+            border-radius: 5px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            width: 300px;
+            text-align: center;
+        }
+
+
+        input[type="text"] {
+            width: calc(100% - 22px);
+            padding: 10px;
+            margin-bottom: 10px;
+            border: 1px solid #ddd;
+            border-radius: 5px;
+        }
+
+
+        button {
+            padding: 10px 15px;
+            border: none;
+            background-color: #28a745;
+            color: white;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+
+
+        button:hover {
+            background-color: #218838;
+        }
+
+
+        ul {
+            list-style: none;
+            padding: 0;
+        }
+
+
+        li {
+            background: #f9f9f9;
+            margin: 5px 0;
+            padding: 10px;
+            border-radius: 5px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+
+        li button {
+            background: tomato;
+            border: none;
+            padding: 5px 10px;
+            color: white;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+
+
+        li button:hover {
+            background: #c82333;
+        }
+    </style>
+
+
+    <div class="container">
+        <h1>Список дел</h1>
+        <input type="text" id="taskInput" placeholder="Напишите задачу для добавления">
+        <button onclick="addTask()">Добавить</button>
+        <ul id="taskList"></ul>
+    </div>
+
+
+    <script>
+        let tasks = []
+
+        // Добавление
+        function addTask() {
+            const taskInput = document.getElementById('taskInput')
+            const task = taskInput.value.trim()
+            if (task) {
+                tasks.push(task)
+                taskInput.value = ''
+                renderTasks()
+            }
+        }
+
+
+        // Удаление
+        function deleteTask(index) {
+            tasks.splice(index, 1)
+            renderTasks()
+        }
+
+
+        // Отображение
+        function renderTasks() {
+            const taskList = document.getElementById('taskList')
+            taskList.innerHTML = ''
+            tasks.forEach((task, index) => {
+                const li = document.createElement('li')
+                li.textContent = task
+                const deleteButton = document.createElement('button')
+                deleteButton.textContent = 'Удалить'
+                deleteButton.onclick = () => deleteTask(index)
+                li.appendChild(deleteButton)
+                taskList.appendChild(li)
+            })
+        }
+    </script>
+</body>
+</html>
