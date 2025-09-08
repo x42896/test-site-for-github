@@ -247,8 +247,56 @@ main {
 /* ----------------------------------------------------- */
 /* Низ сайта */
 /* ----------------------------------------------------- */
-footer { background: radial-gradient(at 0 0,#232325 6%,#17151e 90%); }
+footer {
+    background: radial-gradient(at 0 0, #232325 6%, #17151e 90%);
+    color: white;
+    padding: 40px 0;
+}
 
-.footer__inner { padding-top: 20px; padding-bottom: 20px; }
+.footer__columns {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 20px;
+}
 
-footer h2, footer p, footer a { color: white; }
+/* Адаптивность для футера */
+@media (max-width: 991px) {
+    .footer__columns {
+        grid-template-columns: repeat(2, 1fr);
+    }
+}
+
+@media (max-width: 575px) {
+    .footer__columns {
+        grid-template-columns: 1fr;
+    }
+}
+
+.footer__column {
+    display: flex;
+    flex-direction: column;
+}
+
+.footer__column h3 {
+    font-size: 1.2rem;
+    margin-bottom: 10px;
+}
+
+.footer__column p, .footer__column a {
+    font-size: 0.9rem;
+    color: white;
+    text-decoration: none;
+}
+
+.footer__column a:hover {
+    text-decoration: underline;
+}
+
+.footer__column ul {
+    list-style: none;
+    padding: 0;
+}
+
+.footer__column ul li {
+    margin-bottom: 5px;
+}
