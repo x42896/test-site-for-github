@@ -9,11 +9,38 @@
 </head>
 
 <style>
-    body { color: white; }
+    /* * { padding: 0; margin: 0;} */
+    body { color: white;}
+    a { text-decoration: none; }
+    ul { list-style: none; margin: 0; padding: 0; }
+    
+    header { height: 70px; }
 </style>
 
-<body class="bg-black">
-    <h1>Привет</h1>
-    <p>Начинаем работу с Bootstrap</p>
+<body class="bg-dark">
+    <header class="bg-secondary">
+        <div class="header__inner container w-100 h-100 d-flex align-items-center">
+            <div class="header__inner-title d-flex align-items-center">
+                <p class="fs-1">🎨</p>
+                <h1>Название</h1>
+            </div>
+            
+            <nav class="w-100 h-100 d-flex justify-content-end align-items-center">
+                <ul class="d-flex">
+                    <li class="me-4"><a href="#" class="text-white">Пункт1</a></li>
+                    <li class="me-4"><a href="#" class="text-white">Пункт2</a></li>
+                    <li><a href="#" class="text-white">Пункт3</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <main>
+        <section class="hero vh-50 bg-warning">
+            <div class="hero__inner container">
+                <img src="/images/sd.jpg" alt="Картинка">
+            </div>
+        </section>
+    </main>
 </body>
 </html>
