@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Tailwind Админ-панель</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+</head>
+<body class="bg-gray-900 text-white">
+    <header class="bg-gray-800 h-16">
+        <div class="container mx-auto w-full h-full flex items-center">
+            <div class="header__inner-title flex items-center">
+                <p class="text-3xl">🎨</p>
+                <h1 class="text-xl font-semibold ml-2">Название</h1>
+            </div>
+            
+            <nav class="w-full h-full flex justify-end items-center">
+                <ul class="flex">
+                    <li class="mr-4"><a href="#" class="text-white hover:text-gray-300 transition">Пункт1</a></li>
+                    <li class="mr-4"><a href="#" class="text-white hover:text-gray-300 transition">Пункт2</a></li>
+                    <li><a href="#" class="text-white hover:text-gray-300 transition">Пункт3</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <main>
+        <section class="hero h-96 bg-yellow-500">
+            <div class="hero__inner container mx-auto">
+                <img src="/images/sd.jpg" alt="Картинка" class="w-full h-full object-cover">
+            </div>
+        </section>
+    </main>
+</body>
+</html>
