@@ -35,6 +35,54 @@
     </style>
     
 
+    <!-- Изменение стилей тега p при загрузке страницы -->
+    <p id="tag-p-1" style="display: inline-block; padding: 10px;">При загрузки страницы, этот тег P меняет свои свойства</p>
+    
+    <script>
+        // Как и в Lua есть обращение напрмер к ОДНОМУ (id) элементу как game.workspace.bri....
+        document.getElementById('tag-p-1').style.color = "blue"
+
+        // Но лучше переменную сразу сделать как и в Roblox
+        let tagP1 = document.getElementById('tag-p-1')
+
+        tagP1.style.color = "green"
+        tagP1.style.backgroundColor = "yellow"
+    </script>
+
+
+
+
+
+    <!-- Кнопка добавляет текст в консоль -->
+    <button id="myJustClickButton">Нажми и в консоли появится надпись</button>
+    
+    <script>
+        const myJustClickButton = document.getElementById('myJustClickButton') // Путь по id в HTML до myJustClickButton
+        myJustClickButton.onclick = function () { // Безымянная функция которая срабатывает при клике в кнопке в HTML
+            console.log('Hello Click!')
+        }
+    </script>
+
+
+
+
+
+    <!-- Нажал на кнопку появился Alert и в консоль выведется +1 клик -->
+    <button name="prostoButton" onclick="onClickButton()">Нажми на меня и появится Alert</button>
+    
+    <script>
+        let clickUp = 0;
+
+        function onClickButton() {
+            alert('Вы нажали на меня')
+            clickUp++
+            console.log(clickUp)
+        }
+    </script>
+
+
+
+
 
     <!-- Кнопка меняет цвет body на рандомный цвет из массива (списка) который я сам создал -->
     <button id="btn" type="button">Поменять цвет background на рандомный</button>
@@ -58,55 +106,6 @@
             // Math.floor() округляет это число вниз до целого. Получаем случайный ИНДЕКС массива (от 0 до 6 включительно)
             // Возвращаем элемент массива `colors`, находящийся по этому случайному индексу.
             return colors[Math.floor(Math.random() * colors.length)]
-        }
-    </script>
-
-
-
-
-
-    <!-- Кнопка добавляет текст в консоль -->
-    <button id="myJustClickButton">Нажми и в консоли появится надпись</button>
-    
-    <script>
-        const myJustClickButton = document.getElementById('myJustClickButton') // Путь по id в HTML до myJustClickButton
-        myJustClickButton.onclick = function () { // Безымянная функция которая срабатывает при клике в кнопке в HTML
-            console.log('Hello Click!')
-        }
-    </script>
-
-
-
-
-
-    <!-- Изменение стилей тега p -->
-    <p id="tag-p-1" style="display: inline-block; padding: 10px;">При загрузки страницы, этот тег P меняет свои свойства</p>
-    
-    <script>
-        // Как и в Lua есть обращение напрмер к ОДНОМУ (id) элементу как game.workspace.bri....
-        document.getElementById('tag-p-1').style.color = "blue"
-
-        // Но лучше переменную сразу сделать как и в Roblox
-        let tagP1 = document.getElementById('tag-p-1')
-
-        tagP1.style.color = "green"
-        tagP1.style.backgroundColor = "yellow"
-    </script>
-
-
-
-
-
-    <!-- Нажал на кнопку появился Alert и в консоль выведется +1 клик -->
-    <button name="prostoButton" onclick="onClickButton()">Нажми на меня и появится Alert</button>
-    
-    <script>
-        let clickUp = 0;
-
-        function onClickButton() {
-            alert('Вы нажали на меня')
-            clickUp++
-            console.log(clickUp)
         }
     </script>
 
@@ -188,7 +187,6 @@
             <!-- Сюда добавится код -->
         </ul>
     </div>
-    
 
     <!-- Скрипт добавления заметок -->
     <script>
